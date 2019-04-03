@@ -44,6 +44,15 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#operator.
+    def enterOperator(self, ctx:nimParser.OperatorContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#operator.
+    def exitOperator(self, ctx:nimParser.OperatorContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#literal.
     def enterLiteral(self, ctx:nimParser.LiteralContext):
         pass

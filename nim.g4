@@ -4,8 +4,8 @@ start: (expr NEWLINE)*;
 
 expr: NOT;
 
-character_literals: CHAR_LIT*;
-string_literals: STR_LIT*;
+character_literals: CHAR_LIT+;
+string_literals: STR_LIT+;
 
 NEWLINE: [\r\n]+;
 IDENTIFIER: LETTER (['_']* (LETTER | DIGIT))*;
@@ -24,6 +24,7 @@ MOD: 'mod';
 IS: 'is';
 ISNOT: 'isnot';
 OF: 'of';
+OPERATOR: EQUALS_OPERATOR | ADD_OPERATOR | MUL_OPERATOR | MINUS_OPERATOR | DIV_OPERATOR | BITWISE_NOT_OPERATOR | AND_OPERATOR | OR_OPERATOR | LESS_THAN | GREATER_THAN | NOT_OPERATOR | XOR_OPERATOR;
 EQUALS_OPERATOR: '=';
 ADD_OPERATOR: '+';
 MUL_OPERATOR: '*';
@@ -180,3 +181,5 @@ H: [a-f0-9];
 INDENTATION: '    ';
 
 AT: 'at' | '@';
+COMMENT: '#' ~('\r' | '\n' | '#')*;
+MULTI_LINE_COMMENT: '#' OPEN_BRACK .* CLOSE_BRACK '#'

@@ -8,7 +8,7 @@ character_literals: CHAR_LIT*;
 string_literals: STR_LIT*;
 
 NEWLINE: [\r\n]+;
-IDENTIFIER: LETTER+ ('_' (LETTER | DIGIT))*;
+IDENTIFIER: LETTER (['_']* (LETTER | DIGIT))*;
 DIGIT: [0-9];
 LETTER: [a-zA-Z];
 

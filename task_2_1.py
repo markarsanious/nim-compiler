@@ -239,8 +239,8 @@ def get_token_type(token):
         return "TRIPLESTR_LIT"
     elif token.type == nimLexer.BINDIGIT:
         return "BINDIGIT"
-    elif token.type == nimLexer.TRIPLESTR_ITEM:
-        return "TRIPLESTR_ITEM"
+    # elif token.type == nimLexer.TRIPLESTR_ITEM:
+    #     return "TRIPLESTR_ITEM"
     elif token.type == nimLexer.EQUALS_OPERATOR:
         return "EQUALS_OPERATOR"
     elif token.type == nimLexer.RSTR_LIT:
@@ -253,10 +253,10 @@ def get_token_type(token):
         return "MUL_OPERATOR"
     elif token.type == nimLexer.GENERALIZED_TRIPLESTR_LIT:
         return "GENERALIZED_TRIPLESTR_LIT"
-    elif token.type == nimLexer.character_literals:
-        return "character_literals"
-    elif token.type == nimLexer.string_literals:
-        return "string_literals"
+    # elif token.type == nimLexer.character_literals:
+    #     return "character_literals"
+    # elif token.type == nimLexer.string_literals:
+    #     return "string_literals"
     elif token.type == nimLexer.AT:
         return "AT"
     else:

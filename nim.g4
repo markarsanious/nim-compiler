@@ -4,8 +4,8 @@ start: (expr NEWLINE)*;
 
 expr: NOT;
 
-character_literals: CHAR_LIT*;
-string_literals: STR_LIT*;
+character_literals: CHAR_LIT+;
+string_literals: STR_LIT+;
 
 NEWLINE: [\r\n]+;
 IDENTIFIER: LETTER+ ('_' (LETTER | DIGIT))*;

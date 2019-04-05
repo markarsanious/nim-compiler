@@ -255,6 +255,8 @@ def get_token_type(token):
         return "GENERALIZED_TRIPLESTR_LIT"
     elif token.type == nimLexer.INDENT:
         return "INDENT"
+    elif token.type == nimLexer.LET:
+        return "LET"
     # elif token.type == nimLexer.character_literals:
     #     return "character_literals"
     # elif token.type == nimLexer.string_literals:
@@ -280,13 +282,10 @@ def main():
     token = lexer.nextToken()
     res = ""
     while not token.type == Token.EOF:
-        # print(get_token_type(token), token.text)
-        # if get_token_type(token) in ["REG", "COMMAND", "IMMEDIATE", "MEMORY"]:
         got_token = get_token_type(token)
         if got_token is not None:
             res = res + get_token_type(token) + ' ' + token.text + '\n'
-        else:
-            print(token.text, len(token.text))
+
         token = lexer.nextToken()
 
     output_file = open('nim_result.txt', 'w+')
@@ -302,6 +301,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    print(args.file)
+    # print(args.file)
 
     main()

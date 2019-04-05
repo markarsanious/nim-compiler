@@ -19,6 +19,17 @@ IDENTIFIER true
 COLON :
 INDENT     
 IDENTIFIER echo
+IDENTIFIER what
+IS is
+IDENTIFIER it
+INDENT     
+LET let
+IDENTIFIER guess
+EQUALS_OPERATOR =
+IDENTIFIER parseInt
+OPEN_PAREN (
+IDENTIFIER stdin
+DOT .
 IDENTIFIER readLine
 CLOSE_PAREN )
 INDENT     
@@ -29,7 +40,8 @@ IDENTIFIER answer
 COLON :
 INDENT         
 IDENTIFIER echo
-STR_LIT "Too low, try again"
+TRY try
+IDENTIFIER again
 INDENT     
 ELIF elif
 IDENTIFIER guess
@@ -38,7 +50,8 @@ IDENTIFIER answer
 COLON :
 INDENT         
 IDENTIFIER echo
-STR_LIT "Too high, try again"
+TRY try
+IDENTIFIER again
 INDENT     
 ELSE else
 COLON :

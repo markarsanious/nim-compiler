@@ -8,6 +8,9 @@ character_literals: CHAR_LIT+;
 string_literals: STR_LIT+;
 
 DIGIT: [0-9];
+INDENT: (SPACE SPACE SPACE SPACE)+;
+NOT_INDENT:
+	INDENT* (SPACE | SPACE SPACE | SPACE SPACE SPACE) -> skip;
 SPACE: ' ' -> skip;
 NEWLINE: [\n\r]+ -> skip;
 
@@ -36,7 +39,7 @@ operator:
 	| GREATER_THAN
 	| NOT_OPERATOR
 	| XOR_OPERATOR;
-EQUALS_OPERATOR: '=';
+EQUALS_OPERATOR: '=' | '==';
 ADD_OPERATOR: '+';
 MUL_OPERATOR: '*';
 MINUS_OPERATOR: '-';
@@ -116,6 +119,63 @@ CLOSE_BRACK: ']';
 
 MODULUS: '%';
 
+TRIPLESTR_LIT: '"""' .* '"""';
+CHAR_LIT:
+	'\'\\t\''
+	| '\'\\r\''
+	| '\'\\c\''
+	| '\'\\n\''
+	| '\'\\l\''
+	| '\'\\f\''
+	| '\'\\v\''
+	| '\'\\\\\''
+	| '\'\\\"\''
+	| '\'\\\'\''
+	| '\'\\a\''
+	| '\'\\b\''
+	| '\'\\e\''
+	| '\'\\x\''
+	| ('\'' [0-9a-zA-Z] '\'');
+STR_LIT:
+	'\"' (
+		[\p\r\c\l\f\t\v\\\"\'\-]
+		| [\\] [0-9]+
+		| ' '
+		| ','
+		| [\a\b\e]
+		| [\x] H H
+		| SPACE
+		| [a-zA-Z0-9?!@#$%^&*()_+=`~}{]
+	)* '\"';
+RSTR_LIT: ('r' | 'R') STR_LIT;
+GENERALIZED_STR_LIT: IDENTIFIER STR_LIT;
+GENERALIZED_TRIPLESTR_LIT: IDENTIFIER TRIPLESTR_LIT;
+
+WS: [ \t]+ -> skip;
+AT: 'at' | '@';
+COMMENT: INDENT? '#' ~('\r' | '\n' | '#')* -> skip;
+MULTI_LINE_COMMENT:
+	INDENT? (
+		('#' MULTI_LINE_COMMENT2 '#')
+		| ('#' OPEN_BRACK MULTI_LINE_COMMENT2 CLOSE_BRACK '#')
+		| MULTI_LINE_COMMENT2
+	) -> skip;
+
+MULTI_LINE_COMMENT2:
+	(
+		('#' MULTI_LINE_COMMENT2 '#')
+		| ('#' OPEN_BRACK MULTI_LINE_COMMENT2 CLOSE_BRACK '#')
+		| SINGLE_MULTI_LINE_COMMENT
+	) -> skip;
+
+SINGLE_MULTI_LINE_COMMENT:
+	'#' OPEN_BRACK .* CLOSE_BRACK '#' -> skip;
+
+IDENTIFIER: LETTER (['_']* (LETTER | DIGIT))*;
+H: [A-Fa-f0-9];
+
+LETTER: [a-zA-Z];
+
 literal:
 	INT_LIT
 	| INT8_LIT
@@ -164,45 +224,3 @@ EXP: ('e' | 'E') [+-] DIGIT+ ( [_] DIGIT)*;
 HEXDIGIT: DIGIT | [A-Fa-f];
 OCTDIGIT: [0-7];
 BINDIGIT: [0-1];
-
-TRIPLESTR_LIT: '"""' .* '"""';
-CHAR_LIT:
-	'\'\\t\''
-	| '\'\\r\''
-	| '\'\\c\''
-	| '\'\\n\''
-	| '\'\\l\''
-	| '\'\\f\''
-	| '\'\\v\''
-	| '\'\\\\\''
-	| '\'\\\"\''
-	| '\'\\\'\''
-	| '\'\\a\''
-	| '\'\\b\''
-	| '\'\\e\''
-	| '\'\\x\''
-	| ('\'' [0-9a-zA-Z] '\'');
-STR_LIT:
-	'"' (
-		[\p\r\c\n\l\f\t\v\\\"\']
-		| [\'0-9\']
-		| [\a\b\e\xHH]
-		| ' '
-		| ','
-		| [\']
-		| [a-zA-Z0-9!@#$%^&*()_+=`~}{]
-	)* '"';
-RSTR_LIT: 'r' '"' ( '\\' [btnfr"'\\] | ~[\r\n\\"])* '"';
-GENERALIZED_STR_LIT: IDENTIFIER STR_LIT;
-GENERALIZED_TRIPLESTR_LIT: IDENTIFIER TRIPLESTR_LIT;
-H: [a-f0-9];
-
-INDENT: '    '+;
-
-AT: 'at' | '@';
-COMMENT: '#' ~('\r' | '\n' | '#')* -> skip;
-MULTI_LINE_COMMENT: '#' OPEN_BRACK .* CLOSE_BRACK '#' -> skip;
-
-IDENTIFIER: LETTER (['_']* (LETTER | DIGIT))*;
-
-LETTER: [a-zA-Z];

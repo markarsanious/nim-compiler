@@ -5,20 +5,20 @@ from io import StringIO
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\u0082")
+        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\u0086")
         buf.write("\'\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2")
         buf.write("\3\2\3\2\7\2\22\n\2\f\2\16\2\25\13\2\3\3\3\3\3\4\6\4\32")
         buf.write("\n\4\r\4\16\4\33\3\5\6\5\37\n\5\r\5\16\5 \3\6\3\6\3\7")
-        buf.write("\3\7\3\7\2\2\b\2\4\6\b\n\f\2\4\3\2\22\35\7\2FF__dnppv")
-        buf.write("y#\2\23\3\2\2\2\4\26\3\2\2\2\6\31\3\2\2\2\b\36\3\2\2\2")
-        buf.write("\n\"\3\2\2\2\f$\3\2\2\2\16\17\5\4\3\2\17\20\7\5\2\2\20")
-        buf.write("\22\3\2\2\2\21\16\3\2\2\2\22\25\3\2\2\2\23\21\3\2\2\2")
-        buf.write("\23\24\3\2\2\2\24\3\3\2\2\2\25\23\3\2\2\2\26\27\7\t\2")
-        buf.write("\2\27\5\3\2\2\2\30\32\7w\2\2\31\30\3\2\2\2\32\33\3\2\2")
-        buf.write("\2\33\31\3\2\2\2\33\34\3\2\2\2\34\7\3\2\2\2\35\37\7x\2")
-        buf.write("\2\36\35\3\2\2\2\37 \3\2\2\2 \36\3\2\2\2 !\3\2\2\2!\t")
-        buf.write("\3\2\2\2\"#\t\2\2\2#\13\3\2\2\2$%\t\3\2\2%\r\3\2\2\2\5")
-        buf.write("\23\33 ")
+        buf.write("\3\7\3\7\2\2\b\2\4\6\b\n\f\2\4\3\2\24\37\7\2HHadppu\177")
+        buf.write("\u0081\u0081#\2\23\3\2\2\2\4\26\3\2\2\2\6\31\3\2\2\2\b")
+        buf.write("\36\3\2\2\2\n\"\3\2\2\2\f$\3\2\2\2\16\17\5\4\3\2\17\20")
+        buf.write("\7\7\2\2\20\22\3\2\2\2\21\16\3\2\2\2\22\25\3\2\2\2\23")
+        buf.write("\21\3\2\2\2\23\24\3\2\2\2\24\3\3\2\2\2\25\23\3\2\2\2\26")
+        buf.write("\27\7\13\2\2\27\5\3\2\2\2\30\32\7b\2\2\31\30\3\2\2\2\32")
+        buf.write("\33\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\7\3\2\2\2\35")
+        buf.write("\37\7c\2\2\36\35\3\2\2\2\37 \3\2\2\2 \36\3\2\2\2 !\3\2")
+        buf.write("\2\2!\t\3\2\2\2\"#\t\2\2\2#\13\3\2\2\2$%\t\3\2\2%\r\3")
+        buf.write("\2\2\2\5\23\33 ")
         return buf.getvalue()
 
 
@@ -32,13 +32,14 @@ class nimParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "<INVALID>", "' '", "<INVALID>", "'and'", 
-                     "'var'", "'or'", "'not'", "'div'", "'shl'", "'shr'", 
-                     "'xor'", "'mod'", "'is'", "'isnot'", "'of'", "'='", 
-                     "'+'", "'*'", "'-'", "'/'", "'~'", "'&'", "'|'", "'<'", 
-                     "'>'", "'!'", "'^'", "'.'", "':'", "','", "';'", "'addr'", 
-                     "'as'", "'asm'", "'bind'", "'block'", "'break'", "'case'", 
-                     "'cast'", "'concept'", "'const'", "'continue'", "'converter'", 
+    literalNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
+                     "' '", "<INVALID>", "'and'", "'var'", "'or'", "'not'", 
+                     "'div'", "'shl'", "'shr'", "'xor'", "'mod'", "'is'", 
+                     "'isnot'", "'of'", "<INVALID>", "'+'", "'*'", "'-'", 
+                     "'/'", "'~'", "'&'", "'|'", "'<'", "'>'", "'!'", "'^'", 
+                     "'.'", "':'", "','", "';'", "'addr'", "'as'", "'asm'", 
+                     "'bind'", "'block'", "'break'", "'case'", "'cast'", 
+                     "'concept'", "'const'", "'continue'", "'converter'", 
                      "'defer'", "'discard'", "'distinct'", "'do'", "'elif'", 
                      "'else'", "'end'", "'enum'", "'except'", "'export'", 
                      "'finally'", "'for'", "'from'", "'func'", "'if'", "'import'", 
@@ -50,32 +51,33 @@ class nimParser ( Parser ):
                      "'yield'", "'('", "')'", "'{'", "'}'", "'['", "']'", 
                      "'%'" ]
 
-    symbolicNames = [ "<INVALID>", "DIGIT", "SPACE", "NEWLINE", "AND", "VARIABLE", 
-                      "OR", "NOT", "DIV", "SHL", "SHR", "XOR", "MOD", "IS", 
-                      "ISNOT", "OF", "EQUALS_OPERATOR", "ADD_OPERATOR", 
-                      "MUL_OPERATOR", "MINUS_OPERATOR", "DIV_OPERATOR", 
-                      "BITWISE_NOT_OPERATOR", "AND_OPERATOR", "OR_OPERATOR", 
-                      "LESS_THAN", "GREATER_THAN", "NOT_OPERATOR", "XOR_OPERATOR", 
-                      "DOT", "COLON", "COMMA", "SEMI_COLON", "ADDR", "AS", 
-                      "ASM", "BIND", "BLOCK", "BREAK", "CASE", "CAST", "CONCEPT", 
-                      "CONST", "CONTINUE", "CONVERTER", "DEFER", "DISCARD", 
-                      "DISTINCT", "DO", "ELIF", "ELSE", "END", "ENUM", "EXCEPT", 
-                      "EXPORT", "FINALLY", "FOR", "FROM", "FUNC", "IF", 
-                      "IMPORT", "IN", "INCLUDE", "INTERFACE", "ITERATOR", 
-                      "LET", "MACRO", "METHOD", "MIXIN", "NIL", "NOTIN", 
-                      "OBJECT", "OUT", "PROC", "PTR", "RAISE", "REF", "RETURN", 
-                      "STATIC", "TEMPLATE", "TRY", "TUPLE", "TYPE", "USING", 
-                      "WHEN", "WHILE", "YIELD", "OPEN_PAREN", "CLOSE_PAREN", 
-                      "OPEN_BRACE", "CLOSE_BRACE", "OPEN_BRACK", "CLOSE_BRACK", 
-                      "MODULUS", "INT_LIT", "HEX_LIT", "DEC_LIT", "OCT_LIT", 
-                      "BIN_LIT", "INT8_LIT", "INT16_LIT", "INT32_LIT", "INT64_LIT", 
+    symbolicNames = [ "<INVALID>", "DIGIT", "INDENT", "NOT_INDENT", "SPACE", 
+                      "NEWLINE", "AND", "VARIABLE", "OR", "NOT", "DIV", 
+                      "SHL", "SHR", "XOR", "MOD", "IS", "ISNOT", "OF", "EQUALS_OPERATOR", 
+                      "ADD_OPERATOR", "MUL_OPERATOR", "MINUS_OPERATOR", 
+                      "DIV_OPERATOR", "BITWISE_NOT_OPERATOR", "AND_OPERATOR", 
+                      "OR_OPERATOR", "LESS_THAN", "GREATER_THAN", "NOT_OPERATOR", 
+                      "XOR_OPERATOR", "DOT", "COLON", "COMMA", "SEMI_COLON", 
+                      "ADDR", "AS", "ASM", "BIND", "BLOCK", "BREAK", "CASE", 
+                      "CAST", "CONCEPT", "CONST", "CONTINUE", "CONVERTER", 
+                      "DEFER", "DISCARD", "DISTINCT", "DO", "ELIF", "ELSE", 
+                      "END", "ENUM", "EXCEPT", "EXPORT", "FINALLY", "FOR", 
+                      "FROM", "FUNC", "IF", "IMPORT", "IN", "INCLUDE", "INTERFACE", 
+                      "ITERATOR", "LET", "MACRO", "METHOD", "MIXIN", "NIL", 
+                      "NOTIN", "OBJECT", "OUT", "PROC", "PTR", "RAISE", 
+                      "REF", "RETURN", "STATIC", "TEMPLATE", "TRY", "TUPLE", 
+                      "TYPE", "USING", "WHEN", "WHILE", "YIELD", "OPEN_PAREN", 
+                      "CLOSE_PAREN", "OPEN_BRACE", "CLOSE_BRACE", "OPEN_BRACK", 
+                      "CLOSE_BRACK", "MODULUS", "TRIPLESTR_LIT", "CHAR_LIT", 
+                      "STR_LIT", "RSTR_LIT", "GENERALIZED_STR_LIT", "GENERALIZED_TRIPLESTR_LIT", 
+                      "WS", "AT", "COMMENT", "MULTI_LINE_COMMENT", "MULTI_LINE_COMMENT2", 
+                      "SINGLE_MULTI_LINE_COMMENT", "IDENTIFIER", "H", "LETTER", 
+                      "INT_LIT", "HEX_LIT", "DEC_LIT", "OCT_LIT", "BIN_LIT", 
+                      "INT8_LIT", "INT16_LIT", "INT32_LIT", "INT64_LIT", 
                       "UINT_LIT", "UINT8_LIT", "UINT16_LIT", "UINT32_LIT", 
                       "UINT64_LIT", "FLOAT_LIT", "FLOAT32_LIT", "FLOAT32_SUFFIX", 
                       "FLOAT64_LIT", "FLOAT64_SUFFIX", "EXP", "HEXDIGIT", 
-                      "OCTDIGIT", "BINDIGIT", "TRIPLESTR_LIT", "CHAR_LIT", 
-                      "STR_LIT", "RSTR_LIT", "GENERALIZED_STR_LIT", "GENERALIZED_TRIPLESTR_LIT", 
-                      "H", "INDENT", "AT", "COMMENT", "MULTI_LINE_COMMENT", 
-                      "IDENTIFIER", "LETTER" ]
+                      "OCTDIGIT", "BINDIGIT" ]
 
     RULE_start = 0
     RULE_expr = 1
@@ -89,133 +91,137 @@ class nimParser ( Parser ):
 
     EOF = Token.EOF
     DIGIT=1
-    SPACE=2
-    NEWLINE=3
-    AND=4
-    VARIABLE=5
-    OR=6
-    NOT=7
-    DIV=8
-    SHL=9
-    SHR=10
-    XOR=11
-    MOD=12
-    IS=13
-    ISNOT=14
-    OF=15
-    EQUALS_OPERATOR=16
-    ADD_OPERATOR=17
-    MUL_OPERATOR=18
-    MINUS_OPERATOR=19
-    DIV_OPERATOR=20
-    BITWISE_NOT_OPERATOR=21
-    AND_OPERATOR=22
-    OR_OPERATOR=23
-    LESS_THAN=24
-    GREATER_THAN=25
-    NOT_OPERATOR=26
-    XOR_OPERATOR=27
-    DOT=28
-    COLON=29
-    COMMA=30
-    SEMI_COLON=31
-    ADDR=32
-    AS=33
-    ASM=34
-    BIND=35
-    BLOCK=36
-    BREAK=37
-    CASE=38
-    CAST=39
-    CONCEPT=40
-    CONST=41
-    CONTINUE=42
-    CONVERTER=43
-    DEFER=44
-    DISCARD=45
-    DISTINCT=46
-    DO=47
-    ELIF=48
-    ELSE=49
-    END=50
-    ENUM=51
-    EXCEPT=52
-    EXPORT=53
-    FINALLY=54
-    FOR=55
-    FROM=56
-    FUNC=57
-    IF=58
-    IMPORT=59
-    IN=60
-    INCLUDE=61
-    INTERFACE=62
-    ITERATOR=63
-    LET=64
-    MACRO=65
-    METHOD=66
-    MIXIN=67
-    NIL=68
-    NOTIN=69
-    OBJECT=70
-    OUT=71
-    PROC=72
-    PTR=73
-    RAISE=74
-    REF=75
-    RETURN=76
-    STATIC=77
-    TEMPLATE=78
-    TRY=79
-    TUPLE=80
-    TYPE=81
-    USING=82
-    WHEN=83
-    WHILE=84
-    YIELD=85
-    OPEN_PAREN=86
-    CLOSE_PAREN=87
-    OPEN_BRACE=88
-    CLOSE_BRACE=89
-    OPEN_BRACK=90
-    CLOSE_BRACK=91
-    MODULUS=92
-    INT_LIT=93
-    HEX_LIT=94
-    DEC_LIT=95
-    OCT_LIT=96
-    BIN_LIT=97
-    INT8_LIT=98
-    INT16_LIT=99
-    INT32_LIT=100
-    INT64_LIT=101
-    UINT_LIT=102
-    UINT8_LIT=103
-    UINT16_LIT=104
-    UINT32_LIT=105
-    UINT64_LIT=106
-    FLOAT_LIT=107
-    FLOAT32_LIT=108
-    FLOAT32_SUFFIX=109
-    FLOAT64_LIT=110
-    FLOAT64_SUFFIX=111
-    EXP=112
-    HEXDIGIT=113
-    OCTDIGIT=114
-    BINDIGIT=115
-    TRIPLESTR_LIT=116
-    CHAR_LIT=117
-    STR_LIT=118
-    RSTR_LIT=119
-    GENERALIZED_STR_LIT=120
-    GENERALIZED_TRIPLESTR_LIT=121
-    H=122
-    INDENT=123
-    AT=124
-    COMMENT=125
-    MULTI_LINE_COMMENT=126
-    IDENTIFIER=127
-    LETTER=128
+    INDENT=2
+    NOT_INDENT=3
+    SPACE=4
+    NEWLINE=5
+    AND=6
+    VARIABLE=7
+    OR=8
+    NOT=9
+    DIV=10
+    SHL=11
+    SHR=12
+    XOR=13
+    MOD=14
+    IS=15
+    ISNOT=16
+    OF=17
+    EQUALS_OPERATOR=18
+    ADD_OPERATOR=19
+    MUL_OPERATOR=20
+    MINUS_OPERATOR=21
+    DIV_OPERATOR=22
+    BITWISE_NOT_OPERATOR=23
+    AND_OPERATOR=24
+    OR_OPERATOR=25
+    LESS_THAN=26
+    GREATER_THAN=27
+    NOT_OPERATOR=28
+    XOR_OPERATOR=29
+    DOT=30
+    COLON=31
+    COMMA=32
+    SEMI_COLON=33
+    ADDR=34
+    AS=35
+    ASM=36
+    BIND=37
+    BLOCK=38
+    BREAK=39
+    CASE=40
+    CAST=41
+    CONCEPT=42
+    CONST=43
+    CONTINUE=44
+    CONVERTER=45
+    DEFER=46
+    DISCARD=47
+    DISTINCT=48
+    DO=49
+    ELIF=50
+    ELSE=51
+    END=52
+    ENUM=53
+    EXCEPT=54
+    EXPORT=55
+    FINALLY=56
+    FOR=57
+    FROM=58
+    FUNC=59
+    IF=60
+    IMPORT=61
+    IN=62
+    INCLUDE=63
+    INTERFACE=64
+    ITERATOR=65
+    LET=66
+    MACRO=67
+    METHOD=68
+    MIXIN=69
+    NIL=70
+    NOTIN=71
+    OBJECT=72
+    OUT=73
+    PROC=74
+    PTR=75
+    RAISE=76
+    REF=77
+    RETURN=78
+    STATIC=79
+    TEMPLATE=80
+    TRY=81
+    TUPLE=82
+    TYPE=83
+    USING=84
+    WHEN=85
+    WHILE=86
+    YIELD=87
+    OPEN_PAREN=88
+    CLOSE_PAREN=89
+    OPEN_BRACE=90
+    CLOSE_BRACE=91
+    OPEN_BRACK=92
+    CLOSE_BRACK=93
+    MODULUS=94
+    TRIPLESTR_LIT=95
+    CHAR_LIT=96
+    STR_LIT=97
+    RSTR_LIT=98
+    GENERALIZED_STR_LIT=99
+    GENERALIZED_TRIPLESTR_LIT=100
+    WS=101
+    AT=102
+    COMMENT=103
+    MULTI_LINE_COMMENT=104
+    MULTI_LINE_COMMENT2=105
+    SINGLE_MULTI_LINE_COMMENT=106
+    IDENTIFIER=107
+    H=108
+    LETTER=109
+    INT_LIT=110
+    HEX_LIT=111
+    DEC_LIT=112
+    OCT_LIT=113
+    BIN_LIT=114
+    INT8_LIT=115
+    INT16_LIT=116
+    INT32_LIT=117
+    INT64_LIT=118
+    UINT_LIT=119
+    UINT8_LIT=120
+    UINT16_LIT=121
+    UINT32_LIT=122
+    UINT64_LIT=123
+    FLOAT_LIT=124
+    FLOAT32_LIT=125
+    FLOAT32_SUFFIX=126
+    FLOAT64_LIT=127
+    FLOAT64_SUFFIX=128
+    EXP=129
+    HEXDIGIT=130
+    OCTDIGIT=131
+    BINDIGIT=132
 
     def __init__(self, input:TokenStream):
         super().__init__(input)
@@ -590,7 +596,7 @@ class nimParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 34
             _la = self._input.LA(1)
-            if not(((((_la - 68)) & ~0x3f) == 0 and ((1 << (_la - 68)) & ((1 << (nimParser.NIL - 68)) | (1 << (nimParser.INT_LIT - 68)) | (1 << (nimParser.INT8_LIT - 68)) | (1 << (nimParser.INT16_LIT - 68)) | (1 << (nimParser.INT32_LIT - 68)) | (1 << (nimParser.INT64_LIT - 68)) | (1 << (nimParser.UINT_LIT - 68)) | (1 << (nimParser.UINT8_LIT - 68)) | (1 << (nimParser.UINT16_LIT - 68)) | (1 << (nimParser.UINT32_LIT - 68)) | (1 << (nimParser.UINT64_LIT - 68)) | (1 << (nimParser.FLOAT_LIT - 68)) | (1 << (nimParser.FLOAT32_LIT - 68)) | (1 << (nimParser.FLOAT64_LIT - 68)) | (1 << (nimParser.TRIPLESTR_LIT - 68)) | (1 << (nimParser.CHAR_LIT - 68)) | (1 << (nimParser.STR_LIT - 68)) | (1 << (nimParser.RSTR_LIT - 68)))) != 0)):
+            if not(((((_la - 70)) & ~0x3f) == 0 and ((1 << (_la - 70)) & ((1 << (nimParser.NIL - 70)) | (1 << (nimParser.TRIPLESTR_LIT - 70)) | (1 << (nimParser.CHAR_LIT - 70)) | (1 << (nimParser.STR_LIT - 70)) | (1 << (nimParser.RSTR_LIT - 70)) | (1 << (nimParser.INT_LIT - 70)) | (1 << (nimParser.INT8_LIT - 70)) | (1 << (nimParser.INT16_LIT - 70)) | (1 << (nimParser.INT32_LIT - 70)) | (1 << (nimParser.INT64_LIT - 70)) | (1 << (nimParser.UINT_LIT - 70)) | (1 << (nimParser.UINT8_LIT - 70)) | (1 << (nimParser.UINT16_LIT - 70)) | (1 << (nimParser.UINT32_LIT - 70)) | (1 << (nimParser.UINT64_LIT - 70)) | (1 << (nimParser.FLOAT_LIT - 70)) | (1 << (nimParser.FLOAT32_LIT - 70)) | (1 << (nimParser.FLOAT64_LIT - 70)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self.consume()
